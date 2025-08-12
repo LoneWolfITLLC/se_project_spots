@@ -1,21 +1,27 @@
-# Project 3: Spots
+# 🌟 Spots — Share the Moments That Matter
 
-### Overview  
+**Spots** is a simple, elegant social media web app that lets you post and explore snapshots of life’s most interesting places — from buzzing city cafés to mountain vistas. Built with pure HTML5 and CSS3, it's a lightweight, fast-loading experience that proves you don’t need heavy frameworks to tell a great visual story.
 
-* Intro  
-* Figma  
-* Images  
-  
-**Intro**
-  
-This project is made so all the elements are displayed correctly on popular screen sizes. We recommend investing more time in completing this project, since it's more difficult than previous ones.  
-  
-**Figma**  
-  
-* [Link to the project on Figma](https://www.figma.com/file/BBNm2bC3lj8QQMHlnqRsga/Sprint-3-Project-%E2%80%94-Spots?type=design&node-id=2%3A60&mode=design&t=afgNFybdorZO6cQo-1)
-  
-**Images**  
-  
-The way you'll do this at work is by exporting images directly from Figma — we recommend doing that to practice more. Don't forget to optimize them [here](https://tinypng.com/), so your project loads faster. 
-  
-Good luck and have fun!
+## ✨ Features
+
+- **Create Your Profile** — Add your name, edit details, and make your space your own.
+- **Post New Spots** — Share photos and short captions of your favorite places.
+- **Clean Card-Based Layout** — A distraction-free grid for browsing posts.
+- **Responsive Design** — Looks great on phones, tablets, and desktops.
+- **Visual Storytelling** — Let images do the talking with bold, minimal typography.
+
+---
+
+## 🛠️ Built With
+
+- **HTML5** — Semantic structure for accessibility and SEO.
+- **CSS3** — Modern layouts with Flexbox and Grid.
+- **Custom Styling** — Smooth hover effects and refined typography.
+- **Responsive Techniques** — Media queries for a mobile-first approach.
+
+---
+
+## 🚀 Live Demo
+
+Check out the live version here: **[Spots on GitHub Pages](https://lonewolfitllc.github.io/se_project_spots/index.html)**
+Alternatively, you can check it out on my website within my portfolio @ https://lonewolfit.io/portfolio.html
