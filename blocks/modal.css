@@ -127,7 +127,7 @@
   }
 
   .modal__container {
-    padding: 12px 12px; /* Match desktop padding for modal width */
+    padding: 12px 12px;
     max-width: 730px;
   }
 
