@@ -90,7 +90,7 @@
   border-radius: 8px;
   border: rgba(33, 33, 33, 0.4) 1px solid;
   width: 100%;
-  box-sizing: border-box; /* needed to fix width */
+  box-sizing: border-box;
   transition: border-color 0.3s ease-in-out;
 }
 
@@ -111,7 +111,7 @@
 
 .modal__submit-btn {
   font-size: 16px;
-  max-width: 156px; /* set to auto in media query */
+  max-width: 156px;
   height: 100%;
   border-radius: 8px;
   padding: 18px 32px;
