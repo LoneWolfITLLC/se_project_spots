@@ -1,3 +1,43 @@
+@keyframes modalFadeOut {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+}
+
+@keyframes modalBGFadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes modalFadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes modalBGFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .modal {
   visibility: hidden;
   background: rgba(0, 0, 0, 0.5);
@@ -10,6 +50,7 @@
   justify-content: center;
   align-items: center;
   padding: 10px;
+  animation: modalBGFadeIn 0.35s ease forwards;
 }
 
 .modal_is-opened {
@@ -129,6 +170,18 @@
 
 .modal__submit-btn:active {
   background-color: #848484;
+}
+
+.modal__container--closing {
+  animation: modalFadeOut 0.35s ease forwards !important;
+}
+
+.modal--closing {
+  animation: modalBGFadeOut 0.35s ease forwards !important;
+}
+
+.modal__container--opening {
+  animation: modalFadeIn 0.35s ease forwards !important;
 }
 
 @media screen and (max-width: 627px) {
