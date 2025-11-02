@@ -1,4 +1,30 @@
-/* And everything is selected, everything works, everything is fine in this file. I really dont care if it's not word-for-word the way you want it, I used variables similar to what was used in the videos, and EVERYTHING WORKS GREAT. I DO NOT NEED TO RUIN IT OR MAKE IT LOWER LEVELED. THANKS */
+const initialCards = [
+  {
+    name: "Val Thorens",
+    link: "images/1-photo-by-moritz-feldmann-from-pexels.jpg",
+  },
+  {
+    name: "Restaurant Terrace",
+    link: "images/2-photo-by-ceiline-from-pexels.jpg",
+  },
+  {
+    name: "An outdoor cafe",
+    link: "images/3-photo-by-tubanur-dogan-from-pexels.jpg",
+  },
+  {
+    name: "A very long bridge, over the forest and through the trees",
+    link: "images/4-photo-by-maurice-laschet-from-pexels.jpg",
+  },
+  {
+    name: "Tunnel with morning light",
+    link: "images/5-photo-by-van-anh-nguyen-from-pexels.jpg",
+  },
+  {
+    name: "Mountain house",
+    link: "images/6-photo-by-moritz-feldmann-from-pexels.jpg",
+  },
+];
+
 const editProfileBtn = document.querySelector(".profile__edit-btn");
 const editProfileModal = document.querySelector("#edit-profile-modal");
 const editProfileCloseBtn = editProfileModal.querySelector(".modal__close-btn");
@@ -90,3 +116,8 @@ function handleNewPostSubmit(event) {
 }
 
 newPostForm.addEventListener("submit", handleNewPostSubmit);
+
+initialCards.forEach(function (item) {
+  console.log(item.name);
+  console.log(item.link);
+});
