@@ -42,7 +42,7 @@ const newPostCaptionInput = document.querySelector("#caption-input");
 const profileNameEl = document.querySelector(".profile__name");
 const profileDescriptionEl = document.querySelector(".profile__description");
 
-function closeModalWithAnimation(modal) {
+function closeModal(modal) {
   if (!modal || modal.classList.contains("modal--closing")) return;
   modal.querySelectorAll(".modal__container").forEach((container) => {
     container.classList.add("modal__container--closing");
@@ -61,7 +61,7 @@ function closeModalWithAnimation(modal) {
   );
 }
 
-function openModalWithAnimation(modal) {
+function openModal(modal) {
   modal.classList.add("modal_is-opened");
   modal.querySelectorAll(".modal__container").forEach((container) => {
     container.classList.add("modal__container--opening");
@@ -81,29 +81,29 @@ editProfileBtn.addEventListener("click", function (event) {
   event.preventDefault();
   editProfileNameInput.value = profileNameEl.textContent;
   editProfileDescriptionInput.value = profileDescriptionEl.textContent;
-  openModalWithAnimation(editProfileModal);
+  openModal(editProfileModal);
 });
 
 editProfileCloseBtn.addEventListener("click", function (event) {
   event.preventDefault();
-  closeModalWithAnimation(editProfileModal);
+  closeModal(editProfileModal);
 });
 
 newPostBtn.addEventListener("click", function (event) {
   event.preventDefault();
-  openModalWithAnimation(newPostModal);
+  openModal(newPostModal);
 });
 
 newPostCloseBtn.addEventListener("click", function (event) {
   event.preventDefault();
-  closeModalWithAnimation(newPostModal);
+  closeModal(newPostModal);
 });
 
 function handleEditProfileSubmit(event) {
   event.preventDefault();
   profileNameEl.textContent = editProfileNameInput.value;
   profileDescriptionEl.textContent = editProfileDescriptionInput.value;
-  closeModalWithAnimation(editProfileModal);
+  closeModal(editProfileModal);
 }
 
 editProfileForm.addEventListener("submit", handleEditProfileSubmit);
@@ -112,7 +112,7 @@ function handleNewPostSubmit(event) {
   event.preventDefault();
   console.log("New Post Image Link: " + newPostImageLinkInput.value);
   console.log("New Post Caption: " + newPostCaptionInput.value);
-  closeModalWithAnimation(newPostModal);
+  closeModal(newPostModal);
 }
 
 newPostForm.addEventListener("submit", handleNewPostSubmit);
