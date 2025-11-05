@@ -178,6 +178,14 @@ previewModalCloseButton.addEventListener("click", function (event) {
   closeModal(previewModal);
 });
 
+previewModal.addEventListener("click", function (event) {
+  event.preventDefault();
+  if (event.target === previewModal) {
+    if (previewModal.classList.contains("modal_is-opened"))
+      closeModal(previewModal);
+  }
+});
+
 function handleEditProfileSubmit(event) {
   event.preventDefault();
   profileNameEl.textContent = editProfileNameInput.value;
