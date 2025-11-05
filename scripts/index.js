@@ -178,6 +178,7 @@ previewModalCloseButton.addEventListener("click", function (event) {
   closeModal(previewModal);
 });
 
+// THIS IS HERE FOR SMALL SCREENS WHERE THE CLOSE BUTTON GETS CUT OFF, THIS WILL ALLOW USERS TO CLICK OFF THE MODAL
 previewModal.addEventListener("click", function (event) {
   event.preventDefault();
   if (event.target === previewModal) {
@@ -200,8 +201,8 @@ function handleNewPostSubmit(event) {
   //console.log("New Post Image Link: " + newPostImageLinkInput.value);
   //console.log("New Post Caption: " + newPostCaptionInput.value);
   const cardData = {
-    name: newPostImageLinkInput.value,
-    link: newPostCaptionInput.value,
+    name: newPostCaptionInput.value,
+    link: newPostImageLinkInput.value,
   };
   const card = getCardElement(cardData);
   if (card) cardsList.prepend(card);
