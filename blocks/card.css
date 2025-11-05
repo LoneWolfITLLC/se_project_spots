@@ -68,6 +68,7 @@
   border: none;
   background-image: url("../images/delete.svg");
   background-color: transparent;
+  cursor: pointer;
 }
 
 .card__delete-btn:hover {
