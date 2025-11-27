@@ -33,12 +33,14 @@ const editProfileDescriptionInput = document.querySelector(
   "#profile-description-input"
 );
 const editProfileForm = editProfileModal.querySelector(".modal__form");
+const editProfileSubmitBtn = editProfileForm.querySelector(".modal__close-btn");
 const newPostBtn = document.querySelector(".profile__add-btn");
 const newPostModal = document.querySelector("#new-post-modal");
 const newPostCloseBtn = newPostModal.querySelector(".modal__close-btn");
 const newPostForm = newPostModal.querySelector(".modal__form");
 const newPostImageLinkInput = document.querySelector("#image-link-input");
 const newPostCaptionInput = document.querySelector("#caption-input");
+const newPostSubmitBtn = newPostForm.querySelector(".modal__submit-btn");
 const profileNameEl = document.querySelector(".profile__name");
 const profileDescriptionEl = document.querySelector(".profile__description");
 
@@ -93,6 +95,13 @@ function openModal(modal) {
       container.classList.add("modal__container--opening");
     });
   }
+  modal.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeModal(modal);
+  });
+
+  modal.addEventListener("click", (event) => {
+    if (event.target === modal) closeModal(modal);
+  });
   modal.addEventListener(
     "animationend",
     () => {
@@ -110,6 +119,8 @@ function openModal(modal) {
     },
     { once: true }
   );
+  modal.setAttribute("tabindex", "-1");
+  modal.focus();
 }
 
 function getCardElement(data) {
@@ -155,6 +166,11 @@ editProfileBtn.addEventListener("click", function (event) {
   event.preventDefault();
   editProfileNameInput.value = profileNameEl.textContent;
   editProfileDescriptionInput.value = profileDescriptionEl.textContent;
+  resetValidation(
+    editProfileForm,
+    [editProfileNameInput, editProfileDescriptionInput],
+    settings
+  );
   openModal(editProfileModal);
 });
 
@@ -165,6 +181,11 @@ editProfileCloseBtn.addEventListener("click", function (event) {
 
 newPostBtn.addEventListener("click", function (event) {
   event.preventDefault();
+  resetValidation(
+    newPostForm,
+    [newPostImageLinkInput, newPostCaptionInput],
+    settings
+  );
   openModal(newPostModal);
 });
 
@@ -192,6 +213,7 @@ function handleEditProfileSubmit(event) {
   profileNameEl.textContent = editProfileNameInput.value;
   profileDescriptionEl.textContent = editProfileDescriptionInput.value;
   closeModal(editProfileModal);
+  disableSubmitButton(editProfileSubmitBtn);
 }
 
 editProfileForm.addEventListener("submit", handleEditProfileSubmit);
@@ -208,6 +230,7 @@ function handleNewPostSubmit(event) {
   newPostCaptionInput.value = "";
   newPostImageLinkInput.value = "";
   newPostForm.reset(); //reset the form
+  disableSubmitButton(newPostSubmitBtn);
 }
 
 newPostForm.addEventListener("submit", handleNewPostSubmit);
