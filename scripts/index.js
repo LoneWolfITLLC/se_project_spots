@@ -33,7 +33,8 @@ const editProfileDescriptionInput = document.querySelector(
   "#profile-description-input"
 );
 const editProfileForm = editProfileModal.querySelector(".modal__form");
-const editProfileSubmitBtn = editProfileForm.querySelector(".modal__close-btn");
+const editProfileSubmitBtn =
+  editProfileForm.querySelector(".modal__submit-btn");
 const newPostBtn = document.querySelector(".profile__add-btn");
 const newPostModal = document.querySelector("#new-post-modal");
 const newPostCloseBtn = newPostModal.querySelector(".modal__close-btn");
@@ -50,6 +51,15 @@ const cardsList = document.querySelector(".cards__list");
 const previewModal = document.getElementById("preview-modal");
 const previewModalCloseButton = previewModal.querySelector(".modal__close-btn");
 
+let OPEN_MODAL = null;
+const modalKeyDown = (event) => {
+  if (event.key === "Escape" && OPEN_MODAL) closeModal(OPEN_MODAL);
+};
+
+const modalClick = (event) => {
+  if (OPEN_MODAL && event.target === OPEN_MODAL) closeModal(OPEN_MODAL);
+};
+
 function closeModal(modal) {
   if (!modal || modal.classList.contains("modal--closing")) return;
   if (modal.querySelector(".modal__image-container")) {
@@ -61,7 +71,8 @@ function closeModal(modal) {
       container.classList.add("modal__container--closing");
     });
   }
-
+  modal.removeEventListener("keydown", modalKeyDown);
+  modal.removeEventListener("click", modalClick);
   modal.classList.add("modal--closing");
   modal.addEventListener(
     "animationend",
@@ -79,6 +90,7 @@ function closeModal(modal) {
         });
       }
       modal.classList.remove("modal_is-opened");
+      OPEN_MODAL = null;
     },
     { once: true }
   );
@@ -95,13 +107,8 @@ function openModal(modal) {
       container.classList.add("modal__container--opening");
     });
   }
-  modal.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") closeModal(modal);
-  });
-
-  modal.addEventListener("click", (event) => {
-    if (event.target === modal) closeModal(modal);
-  });
+  modal.addEventListener("keydown", modalKeyDown);
+  modal.addEventListener("click", modalClick);
   modal.addEventListener(
     "animationend",
     () => {
@@ -121,6 +128,7 @@ function openModal(modal) {
   );
   modal.setAttribute("tabindex", "-1");
   modal.focus();
+  OPEN_MODAL = modal;
 }
 
 function getCardElement(data) {
@@ -229,7 +237,6 @@ function handleNewPostSubmit(event) {
   closeModal(newPostModal);
   newPostCaptionInput.value = "";
   newPostImageLinkInput.value = "";
-  newPostForm.reset(); //reset the form
   disableSubmitButton(newPostSubmitBtn);
 }
 
