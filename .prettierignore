@@ -1,2 +1,4 @@
 vendor/normalize.css
 .vscode/settings.json
+node_modules/
+dist/

@@ -1,3 +1,9 @@
+import {
+  enableValidation,
+  resetValidation,
+  validatorSettings,
+  disableSubmitButton,
+} from "./validation.js";
 const initialCards = [
   {
     name: "Val Thorens",
@@ -30,7 +36,7 @@ const editProfileModal = document.querySelector("#edit-profile-modal");
 const editProfileCloseBtn = editProfileModal.querySelector(".modal__close-btn");
 const editProfileNameInput = document.querySelector("#profile-name-input");
 const editProfileDescriptionInput = document.querySelector(
-  "#profile-description-input"
+  "#profile-description-input",
 );
 const editProfileForm = editProfileModal.querySelector(".modal__form");
 const editProfileSubmitBtn =
@@ -92,7 +98,7 @@ function closeModal(modal) {
       modal.classList.remove("modal_is-opened");
       OPEN_MODAL = null;
     },
-    { once: true }
+    { once: true },
   );
 }
 
@@ -124,7 +130,7 @@ function openModal(modal) {
         });
       }
     },
-    { once: true }
+    { once: true },
   );
   modal.setAttribute("tabindex", "-1");
   modal.focus();
@@ -177,7 +183,7 @@ editProfileBtn.addEventListener("click", function (event) {
   resetValidation(
     editProfileForm,
     [editProfileNameInput, editProfileDescriptionInput],
-    settings
+    validatorSettings,
   );
   openModal(editProfileModal);
 });
@@ -192,7 +198,7 @@ newPostBtn.addEventListener("click", function (event) {
   resetValidation(
     newPostForm,
     [newPostImageLinkInput, newPostCaptionInput],
-    settings
+    validatorSettings,
   );
   openModal(newPostModal);
 });
@@ -246,3 +252,5 @@ initialCards.forEach(function (item) {
   const card = getCardElement(item);
   cardsList.append(card);
 });
+
+enableValidation(validatorSettings);

@@ -1,5 +1,5 @@
 //  I USE THE DISABLED PSEUDO CLASS INSTEAD of inactiveButtonClass and the errorClass is not used
-const settings = {
+export const validatorSettings = {
   formSelector: ".modal__form",
   inputSelector: ".modal__input",
   submitButtonSelector: ".modal__submit-btn",
@@ -12,7 +12,7 @@ const hasInvalidInput = (inputList) => {
   });
 };
 
-const disableSubmitButton = (buttonElement) => {
+export const disableSubmitButton = (buttonElement) => {
   buttonElement.disabled = true;
 };
 
@@ -30,7 +30,7 @@ const toggleButtonState = (inputList, buttonElement) => {
 
 const showInputError = (formElement, inputElement, errorText, config) => {
   const errorMsgElement = formElement.querySelector(
-    `#${inputElement.id}-error`
+    `#${inputElement.id}-error`,
   );
   errorMsgElement.textContent = errorText;
   inputElement.classList.add(config.inputErrorClass);
@@ -38,7 +38,7 @@ const showInputError = (formElement, inputElement, errorText, config) => {
 
 const hideInputError = (formElement, inputElement, config) => {
   const errorMsgElement = formElement.querySelector(
-    `#${inputElement.id}-error`
+    `#${inputElement.id}-error`,
   );
   errorMsgElement.textContent = "";
   inputElement.classList.remove(config.inputErrorClass);
@@ -50,7 +50,7 @@ const checkInputValidity = (formElement, inputElement, config) => {
       formElement,
       inputElement,
       inputElement.validationMessage,
-      config
+      config,
     );
   } else {
     hideInputError(formElement, inputElement, config);
@@ -59,7 +59,7 @@ const checkInputValidity = (formElement, inputElement, config) => {
 
 const setEventListeners = (formElement, config) => {
   const inputList = Array.from(
-    formElement.querySelectorAll(config.inputSelector)
+    formElement.querySelectorAll(config.inputSelector),
   );
   const buttonElement = formElement.querySelector(config.submitButtonSelector);
 
@@ -73,18 +73,15 @@ const setEventListeners = (formElement, config) => {
   });
 };
 
-//  OPTIONAL
-const resetValidation = (formElement, inputList, config) => {
+export const resetValidation = (formElement, inputList, config) => {
   inputList.forEach((inputElement) => {
     hideInputError(formElement, inputElement, config);
   });
 };
 
-const enableValidation = (config) => {
+export const enableValidation = (config) => {
   const formList = Array.from(document.querySelectorAll(config.formSelector));
   formList.forEach((formElement) => {
     setEventListeners(formElement, config);
   });
 };
-
-enableValidation(settings);
